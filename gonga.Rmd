@@ -44,7 +44,7 @@ biomass.df <- biomass %>%
 ```{}
 #plotting
 BiomassBox <- ggplot() +
-  geom_boxplot(data = biomass.df, aes(x = site, y = Biomass, fill = site))
+  geom_boxplot(data = biomass.df, aes(x = site, y = Biomass))
 BiomassBox
 ```
 
