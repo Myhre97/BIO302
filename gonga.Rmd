@@ -1,0 +1,54 @@
+Mt Gonga Biomass
+Richard Telford
+5/21/2021
+Task: Biomass data
+
+Plant Biomass data for alpine grasslands on Gongga Mountain, China, are archived at link
+
+There are four sites, each with about 20 plots. For each species in each plot, the following are recorded:
+
+height up to ten times (H1-H10)
+Biomass (labelled production)
+Cover
+Find the total biomass per plot, and present the results in a figure.
+
+As far as possible, follow best practice when running the analysis.
+
+``` {}
+#Libraries
+library(readxl)
+library(dplyr)
+library(tidyverse)
+```
+
+```{}
+#getting the data
+biomass2015 <- ("C:/Users/larsm/OneDrive/Skrivebord/Fag/BIO302/biomass2015.xls")
+biomass <- excel_sheets(biomass2015) %>% 
+  purrr::map_df(~ read_excel(biomass2015, sheet = .x))
+
+```
+
+``` {}
+#keeping only relevant colums; Site, plot and production
+biomass.df <- biomass %>%
+  select(c(site, plot, production)) %>%
+  dplyr::mutate(site = factor
+                (site, levels = c("L", "M", "A", "H"))) %>% 
+  group_by(site, plot) %>% 
+  summarise(Biomass = sum(production, na.rm = T))
+
+```
+
+```{}
+#plotting
+BiomassBox <- ggplot() +
+  geom_boxplot(data = biomass.df, aes(x = site, y = Biomass, fill = site))
+BiomassBox
+```
+
+```{}
+#git
+use_git()
+```
+
