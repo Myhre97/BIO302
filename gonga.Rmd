@@ -49,6 +49,20 @@ BiomassBox
 
 ```{}
 #git
+library(usethis)
+
+use_git_config(
+  user.name = "Myhre97", 
+  user.email = "larsmmyhre@gmail.com"
+  )
+  
+create_github_token()
+
+gitcreds::gitcreds_set()
+
 use_git()
+
+Use_github()
+
 ```
 
