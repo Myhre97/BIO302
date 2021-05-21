@@ -22,6 +22,7 @@ library(tidyverse)
 ```
 
 ```{}
+
 #getting the data
 biomass2015 <- ("C:/Users/larsm/OneDrive/Skrivebord/Fag/BIO302/biomass2015.xls")
 biomass <- excel_sheets(biomass2015) %>% 
